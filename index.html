@@ -10,13 +10,16 @@
 <body>
 	<header>
 		<h1>Welcome to MSFS HTML Using Copilot</h1>
-		<nav role="navigation">
-			<ul role="menubar">
-				<li><a href="#home">Home</a></li>
-				<li><a href="#about">About</a></li>
-				<li><a href="#contact">Contact</a></li>
-			</ul>
-		</nav>
+		   <!-- Hamburger icon for mobile menu toggle -->
+		   <button id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navMenu" onclick="toggleMenu()">&#9776;</button>
+		   <!-- Single nav menu for all devices -->
+		   <nav id="navMenu" class="nav-menu" role="navigation" aria-hidden="true">
+			   <ul role="menubar">
+				   <li><a href="#home">Home</a></li>
+				   <li><a href="#about">About</a></li>
+				   <li><a href="#contact">Contact</a></li>
+			   </ul>
+		   </nav>
 	</header>
 	<main>
 		<article>
@@ -49,48 +52,68 @@
 			</ul>
 		</section>
 
-		<section id="projects">
-			<h2>Projects</h2>
-			<article>
-				<h3>Project Alpha</h3>
-				<figure>
-					<img src="https://via.placeholder.com/150" alt="Screenshot of Project Alpha web application interface">
-					<figcaption>Screenshot of Project Alpha</figcaption>
-				</figure>
-				<p>This is a placeholder description for Project Alpha. It showcases the use of semantic HTML and modern web practices.</p>
-			</article>
-			<article>
-				<h3>Project Beta</h3>
-				<figure>
-					<img src="https://via.placeholder.com/150" alt="Screenshot of Project Beta responsive design demo">
-					<figcaption>Screenshot of Project Beta</figcaption>
-				</figure>
-				<p>This is a placeholder description for Project Beta. It demonstrates responsive design and accessibility features.</p>
-			</article>
-		</section>
+		   <section id="projects">
+			   <h2>Projects</h2>
+			   <div id="project-filters" class="project-filters">
+				   <button onclick="filterProjects('all')" class="filter-btn" aria-pressed="true">All</button>
+				   <button onclick="filterProjects('web')" class="filter-btn" aria-pressed="false">Web</button>
+				   <button onclick="filterProjects('design')" class="filter-btn" aria-pressed="false">Design</button>
+			   </div>
+			   <div id="project-list">
+				   <article data-category="web">
+					   <h3>Project Alpha</h3>
+					   <figure>
+						   <img src="https://via.placeholder.com/150" alt="Screenshot of Project Alpha web application interface" class="project-img" tabindex="0">
+						   <figcaption>Screenshot of Project Alpha</figcaption>
+					   </figure>
+					   <p>This is a placeholder description for Project Alpha. It showcases the use of semantic HTML and modern web practices.</p>
+				   </article>
+				   <article data-category="design">
+					   <h3>Project Beta</h3>
+					   <figure>
+						   <img src="https://via.placeholder.com/150" alt="Screenshot of Project Beta responsive design demo" class="project-img" tabindex="0">
+						   <figcaption>Screenshot of Project Beta</figcaption>
+					   </figure>
+					   <p>This is a placeholder description for Project Beta. It demonstrates responsive design and accessibility features.</p>
+				   </article>
+			   </div>
 
-        <section id="contact">
-			<h2>Contact</h2>
-			<form action="#" method="post">
-				<div>
-					<label for="name">Name:</label>
-					<input type="text" id="name" name="name" required>
-				</div>
-				<div>
-					<label for="email">Email:</label>
-					<input type="email" id="email" name="email" required>
-				</div>
-				<div>
-					<label for="message">Message:</label>
-					<textarea id="message" name="message" rows="5" required></textarea>
-				</div>
-				<button type="submit">Send Message</button>
-			</form>
-		</section>
+			   <!-- Lightbox Modal -->
+			   <div id="lightbox" class="lightbox" aria-modal="true" role="dialog" tabindex="-1" style="display:none;">
+				   <span class="lightbox-close" id="lightboxClose" tabindex="0" aria-label="Close image">&times;</span>
+				   <img class="lightbox-content" id="lightboxImg" alt="Project image enlarged">
+				   <div id="lightboxCaption" class="lightbox-caption"></div>
+			   </div>
+		   </section>
+
+		<section id="contact">
+		   <h2>Contact</h2>
+		   <form id="contactForm" action="#" method="post" novalidate>
+			   <div>
+				   <label for="name">Name:</label>
+				   <input type="text" id="name" name="name" required aria-describedby="nameError">
+				   <span class="form-error" id="nameError" aria-live="polite"></span>
+			   </div>
+			   <div>
+				   <label for="email">Email:</label>
+				   <input type="email" id="email" name="email" required aria-describedby="emailError">
+				   <span class="form-error" id="emailError" aria-live="polite"></span>
+			   </div>
+			   <div>
+				   <label for="message">Message:</label>
+				   <textarea id="message" name="message" rows="5" required aria-describedby="messageError"></textarea>
+				   <span class="form-error" id="messageError" aria-live="polite"></span>
+			   </div>
+			   <button type="submit">Send Message</button>
+			   <div id="formSuccess" class="form-success" aria-live="polite"></div>
+		   </form>
+	   </section>
 
 	</main>
 	<footer>
 		<p>&copy; 2025 MSFS HTML Using Copilot. All rights reserved.</p>
 	</footer>
+
+	<script src="script.js"></script>
 </body>
 </html>
