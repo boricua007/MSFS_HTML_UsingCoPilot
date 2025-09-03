@@ -12,21 +12,8 @@
     margin-top: 1rem;
     min-height: 1.2em;
 }
-/* Lightbox styles */
-.lightbox {
-    display: none;
-    position: fixed;
-    z-index: 2000;
-    left: 0;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    overflow: auto;
-    background: rgba(0,0,0,0.8);
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
+/* Removed misplaced properties above. All layout styles are now in proper selector blocks below. */
+
 .lightbox.show {
     display: flex;
 }
@@ -42,15 +29,15 @@
     color: #fff;
     margin-top: 1rem;
     font-size: 1.1rem;
-}
-.lightbox-close {
-    position: absolute;
-    top: 2rem;
-    right: 2rem;
-    color: #fff;
-    font-size: 2.5rem;
-    font-weight: bold;
-    cursor: pointer;
+        header {
+            flex-direction: column;
+            align-items: stretch;
+        }
+        .nav-menu {
+            margin-left: 0;
+            width: 100%;
+            justify-content: flex-start;
+        }
     z-index: 2001;
 }
 /* Enable smooth scrolling for anchor links */
@@ -259,8 +246,9 @@ section#projects article {
     gap: 1.5rem;
 }
 section#projects figure {
-    margin: 0;
+    margin: 0 auto;
     min-width: 150px;
+    text-align: center;
 }
 section#projects img {
     border-radius: 6px;
@@ -269,10 +257,44 @@ section#projects img {
     box-shadow: 0 1px 4px rgba(0,0,0,0.10);
     -webkit-box-shadow: 0 1px 4px rgba(0,0,0,0.10);
     -moz-box-shadow: 0 1px 4px rgba(0,0,0,0.10);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 section#projects h3 {
     margin-top: 0;
     color: #222;
+}
+
+/* Project section filter buttons */
+.project-filters {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-start;
+    margin-bottom: 1rem;
+}
+
+.filter-btn {
+    padding: 0.3rem 0.8rem;
+    font-size: 0.95rem;
+    min-width: unset;
+    width: auto;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border: 1px solid #ccc;
+    background: #f7f7f7;
+    color: #222;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    -webkit-transition: background 0.2s, color 0.2s;
+    -moz-transition: background 0.2s, color 0.2s;
+}
+
+.filter-btn:focus, .filter-btn:hover {
+    background: #ffd700;
+    color: #222;
+    outline: 2px solid #ffd700;
 }
 
 /* Skills Section - List with Icons */
